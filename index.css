@@ -1,0 +1,295 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Medical Events Connect — Design System
+   Sage/olive green palette inspired by the reference dashboard.
+   Warm cream backgrounds, dark moss sidebar, olive accents. */
+
+@layer base {
+  :root {
+    --background: 40 17% 95%;
+    --foreground: 100 18% 14%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 100 18% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 100 18% 14%;
+
+    --primary: 79 33% 36%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 48 12% 90%;
+    --secondary-foreground: 100 18% 14%;
+
+    --muted: 48 12% 91%;
+    --muted-foreground: 90 10% 40%;
+
+    --accent: 60 17% 87%;
+    --accent-foreground: 100 18% 14%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 45 13% 84%;
+    --input: 45 13% 84%;
+    --ring: 79 33% 36%;
+
+    --radius: 0.625rem;
+
+    /* Moss green sidebar */
+    --sidebar-background: 100 16% 22%;
+    --sidebar-foreground: 60 17% 92%;
+    --sidebar-primary: 82 24% 46%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 100 18% 28%;
+    --sidebar-accent-foreground: 60 17% 96%;
+    --sidebar-border: 100 14% 30%;
+    --sidebar-ring: 82 24% 46%;
+
+    /* Custom sage tokens */
+    --sage-50: 60 17% 96%;
+    --sage-100: 55 14% 91%;
+    --sage-200: 60 10% 82%;
+    --sage-300: 80 12% 68%;
+    --sage-400: 82 18% 52%;
+    --sage-500: 79 33% 36%;
+    --sage-600: 82 35% 30%;
+    --sage-700: 100 24% 22%;
+    --sage-800: 100 18% 16%;
+    --sage-900: 100 20% 10%;
+    --olive: 80 42% 33%;
+    --cream: 40 20% 96%;
+  }
+
+  .dark {
+    --background: 100 12% 9%;
+    --foreground: 60 17% 92%;
+
+    --card: 100 12% 12%;
+    --card-foreground: 60 17% 92%;
+
+    --popover: 100 12% 12%;
+    --popover-foreground: 60 17% 92%;
+
+    --primary: 82 24% 46%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 100 12% 18%;
+    --secondary-foreground: 60 17% 90%;
+
+    --muted: 100 12% 16%;
+    --muted-foreground: 90 10% 55%;
+
+    --accent: 100 12% 20%;
+    --accent-foreground: 60 17% 92%;
+
+    --destructive: 0 62% 52%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 100 12% 22%;
+    --input: 100 12% 22%;
+    --ring: 82 24% 46%;
+
+    --sidebar-background: 100 14% 9%;
+    --sidebar-foreground: 60 17% 88%;
+    --sidebar-primary: 82 24% 46%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 100 14% 16%;
+    --sidebar-accent-foreground: 60 17% 92%;
+    --sidebar-border: 100 12% 18%;
+    --sidebar-ring: 82 24% 46%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Subtle scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(90 10% 72%);
+  border-radius: 999px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: hsl(100 10% 28%);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(90 10% 62%);
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: hsl(100 10% 36%);
+}
+
+/* Fade-in animation utility */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in-up {
+  animation: fade-in-up 0.4s ease-out both;
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+/* Dashboard hero radial accent */
+.hero-radial {
+  background-image: radial-gradient(ellipse at 0% 0%, hsl(82 24% 46% / 0.15), transparent 50%),
+                    radial-gradient(ellipse at 100% 100%, hsl(79 33% 36% / 0.12), transparent 55%);
+}
+
+/* CPD progress bar */
+.cpd-progress-track {
+  background: hsl(100 14% 30% / 0.6);
+}
+.cpd-progress-fill {
+  background: linear-gradient(90deg, hsl(82 30% 52%), hsl(60 35% 62%));
+}
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes doctor_marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-33.333%); }
+}
+
+:root[data-palette="clinical-blue"] {
+  --primary: 203 78% 41%; --ring: 203 78% 41%; --sidebar-primary: 203 78% 41%;
+  --accent: 198 45% 93%; --sidebar-background: 210 44% 13%; --sidebar-accent: 209 37% 20%;
+}
+.dark[data-palette="clinical-blue"] { --primary: 199 75% 55%; --accent: 207 32% 20%; }
+:root[data-palette="teal"] {
+  --primary: 173 80% 27%; --ring: 173 80% 27%; --sidebar-primary: 173 80% 32%;
+  --accent: 168 42% 92%; --sidebar-background: 175 44% 10%; --sidebar-accent: 174 34% 17%;
+}
+.dark[data-palette="teal"] { --primary: 172 66% 45%; --accent: 174 31% 19%; }
+@keyframes medical-logo-spin {
+  to { transform: rotateY(360deg) rotateZ(360deg); }
+}
+
+@keyframes medical-orbit-spin {
+  to { transform: rotate(360deg); }
+}
+
+.digital-grid {
+  background-image: linear-gradient(rgba(167,191,117,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(167,191,117,.08) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(circle at center, black, transparent 75%);
+}
+
+.medical-logo-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 230px;
+  height: 230px;
+  perspective: 900px;
+}
+
+.medical-logo-rotator {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 150px;
+  height: 150px;
+  border: 1px solid rgba(167,191,117,.35);
+  border-radius: 38px;
+  background: linear-gradient(145deg, rgba(255,255,255,.11), rgba(120,147,75,.12));
+  box-shadow: inset 0 0 28px rgba(167,191,117,.16), 0 0 55px rgba(120,147,75,.22);
+  backdrop-filter: blur(14px);
+  transform-style: preserve-3d;
+  animation: medical-logo-spin 16s linear infinite;
+}
+
+.medical-logo-orbit {
+  position: absolute;
+  border: 1px solid rgba(167,191,117,.22);
+  border-radius: 999px;
+  animation: medical-orbit-spin 12s linear infinite;
+}
+
+.medical-logo-orbit::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: #a7bf75;
+  box-shadow: 0 0 14px #a7bf75;
+}
+
+.medical-logo-orbit-one { inset: 11px; }
+.medical-logo-orbit-two { inset: 32px; animation-direction: reverse; animation-duration: 9s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .medical-logo-rotator, .medical-logo-orbit { animation: none; }
+}
+
+/* Digital glass treatment used selectively on high-value interface surfaces. */
+.digital-gloss {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.13),
+    inset 0 -1px 0 rgba(66,88,43,.12),
+    0 10px 28px rgba(10,20,12,.10);
+  backdrop-filter: blur(16px) saturate(1.18);
+}
+
+.digital-gloss::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -55%;
+  left: -30%;
+  width: 55%;
+  height: 210%;
+  pointer-events: none;
+  transform: rotate(18deg);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.10), transparent);
+  transition: transform .7s ease, left .7s ease;
+}
+
+.digital-gloss:hover::before {
+  left: 78%;
+  transform: rotate(18deg) translateX(30%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .digital-gloss::before { transition: none; }
+}
