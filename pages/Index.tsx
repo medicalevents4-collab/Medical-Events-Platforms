@@ -45,9 +45,12 @@ export default function Index() {
         </button>
       </section>
 
-      <footer className="absolute bottom-4 left-0 right-0 z-10 text-center text-xs text-white/60">
+      <footer className="absolute bottom-4 left-0 right-0 z-10 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs text-white/60">
         <a href="/privacy-policy.html" className="underline underline-offset-4 transition hover:text-white focus:outline-none focus:ring-2 focus:ring-white/60">
           Privacy Policy
+        </a>
+        <a href="/terms-of-service.html" className="underline underline-offset-4 transition hover:text-white focus:outline-none focus:ring-2 focus:ring-white/60">
+          Terms of Service
         </a>
       </footer>
     </main>
