@@ -44,6 +44,12 @@ export default function Index() {
           <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
         </button>
       </section>
+
+      <footer className="absolute bottom-4 left-0 right-0 z-10 text-center text-xs text-white/60">
+        <a href="/privacy-policy.html" className="underline underline-offset-4 transition hover:text-white focus:outline-none focus:ring-2 focus:ring-white/60">
+          Privacy Policy
+        </a>
+      </footer>
     </main>
   );
 }
